@@ -1,15 +1,31 @@
-export default function Result() {
+import { calculateInvestmentResults, formatter } from '../util/investment.js'
+
+export default function Result({ inputs }) {
+	const resultData = calculateInvestmentResults(inputs)
 	return (
 		<table id="result">
 			<thead>
 				<tr>
 					<th>Year</th>
-					<th>interest</th>
-					<th>valueEndOfYear</th>
-					<th>annualInvestment</th>
+					<th>Investment value</th>
+					<th>Interest</th>
+					<th>Total Interest</th>
+					<th>Invested Capital</th>
 				</tr>
 			</thead>
-			<tbody>{}</tbody>
+			<tbody>
+				{resultData.map(yearData => {
+					return (
+						<tr key={yearData.year}>
+							<td>{yearData.year}</td>
+							<td>{formatter.format(yearData.valueEndOfYear)}</td>
+							<td>{formatter.format(yearData.interest)}</td>
+							<td></td>
+							<td></td>
+						</tr>
+					)
+				})}
+			</tbody>
 		</table>
 	)
 }
