@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import UserInput from './components/UserInput'
-import Result from './components/result'
+import Result from './components/Result'
 
 function App() {
 	const [inputsValues, setInputsValues] = useState({
